@@ -1,3 +1,7 @@
+:root {
+    --text-color: white ;
+    --front-url:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 body {
     background-color: black;
     color: white;
@@ -5,213 +9,272 @@ body {
     height: auto;
     /* Đổi màu chữ thành trắng để dễ đọc trên nền màu đen */
 }
+
+/** format lại file css bằng Extension của IDE để các báo cách nhau 1 dòng trống. VD: VSCode Prettier **/
 .header {
     width: 100%;
     height: 50px;
-    justify-content: space-between; 
     color: white;
-    display: flex; 
+    display: grid;
+    grid-template-columns: 50% 50%;
     align-items: center;
 }
-.header_logo {
-    padding-left: 2%;
-   float: left;
+
+.header__logo {
+    padding-left: 15px;
+    /** padding KHÔNG để dưới dạng phần trăm => để rem hoặc px **/
+    float: left;
 }
-.header_link {
-    float: right;
+
+.header__link {
     display: flex;
-}
-.header_title {
-    padding: 10px 10px;
-    transition: color 0.3s; 
+    justify-content: flex-end;
 }
 
-.header_title:hover {
+.header__link--title {
+    color: white;
+    float: right;
+}
+
+.header__link--title:hover {
     color: orange;
+    cursor: pointer;
 }
+
 nav {
+    display: flex;
     width: 100%;
-    text-align: center;
+
 }
 
-.nav_h1 {
+.nav__title {
     text-align: center;
     width: 100%;
+    font-size: 96px;
 }
 
-.nav_content {
+.nav__content {
     text-align: center;
     margin-bottom: 5%;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.nav_image {
+.nav__content--image {
     width: 90%;
     margin: 0 auto;
-    max-width: 100%; /* Để ảnh không vượt quá chiều rộng của trang */
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+    /* Để ảnh không vượt quá chiều rộng của trang */
+    display: block;
+    /* Loại bỏ khoảng trắng dưới ảnh */
 }
 
-.nav_contentend {
+.nav__content--contentend {
+    margin-top: 10px;
     text-align: left;
     margin-left: 5%;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
-.image{
+
+.item {
+    /** Không để khai báo style với dấu "{" dính nhau ntn => dùng formatter **/
     width: 100%;
-    display: block;
-    margin-left: 5% ;
+    display: grid;
+    margin-left: 5%;
+
 }
-.image_content{
+
+.item_content {
     display: flex;
-    flex-direction: column;
-}
-.image_title{
     float: left;
+    width: 70%;
+    margin: 5px 0 5px 0;
+}
+
+.item__content--title {
     width: 40%;
 }
-.image_content1{
-    float: left;
-    margin-top: 2% ;
+
+.item__content--head {
+
+    margin-top: 5px;
     font-size: 24px;
     width: 40%;
 }
-.image_content2{
-    float: left;
-    margin-top: 2%;
+
+.item__content--body {
+
+    margin-top: 3px;
     font-size: 16px;
     width: 40%;
 }
-.image_content3{
-    float: left;
-    margin-top: 2% ;
+
+.item__content--end {
+    margin-top: 3px;
     font-size: 12px;
     width: 40%;
 }
-.img{
-    width: 100%;
+
+.item__image {
+    width: 90%;
     height: auto;
     align-items: center;
+
 }
-.content{
+
+.item__image--photo {
+    margin-left: 16px;
+    margin-top: 16px;
+}
+@media only screen and (max-width: 570px) {
+    .item__image--photo {
+        width: 100%;
+    }
+}
+
+.content {
     display: grid;
-    grid-template-rows: auto ;
-    padding: 1%;
+    grid-template-rows: auto;
+    padding: 5px;
     margin-right: 5%;
 }
-.content_head,
-.content_body{
+
+.content__head,
+.content__body {
     display: grid;
     grid-template-columns: 50% 50%;
     float: left;
 }
-.content_head-titel{
-    width: auto;
-    height: 50px;
-    align-items: center;
-}
-.content_head-title-h3{
-    width: auto;
+
+.content__head--title {
     font-size: 50px;
+    font-style: inherit;
 }
-.content_head-url{
-    width: auto;
-    padding-top:15px ;
-    margin: 2%;
+
+.content__head--url {
+    padding: 0;
 }
-.content_head-url-h6{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.content__head--URL{
+    font-family: var(--front-url);
     font-style: italic;
     color: gray;
-    
 }
-.content_head-url-a{
+
+.content__head--link {
     color: white;
     transition: color 0.3s ease-in-out;
 }
-.content-head-url-a:hover {
+
+.content__head--link:hover {
     color: orange;
 }
 
-.content_body-img{
-    width: 100%;
+.content__body--img {
+    text-align: center;
+    width: 95%;
 }
-.content_body-img-image{
-    width: 100%;
-}
-.content_body-noiDung{
+
+.content__body--introduce {
     width: 100%;
     margin-left: 2%;
 }
-.content_body-noiDung-p{
-    width: 100%;
-}
-@media only screen and (max-width: 500px){
-    .content_head,
-    .content_body {
+
+@media only screen and (max-width: 600px) {
+   
+    .content__head,
+    .content__body {
+        display: grid;
         grid-template-columns: 100%;
-        float: none;
+        justify-content: center;
     }
-    .content_head-url{
-        padding-top:5px ;
+    .content__body--img{
+        width: 95%;
+        text-align: center;
+    }
+
+    .content__head--url {
+        
         margin-bottom: 2%;
     }
 }
+
 .cover {
-    margin-left: -5%;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    width: 100%;
 }
-.cover_img {
+
+.cover__img {
+    width: 100%;
     padding-right: 5%;
     position: relative;
+    align-items: center;
 }
-.cover_img-image {
-    width: 100%;
+
+.cover__img--image {
+    width: 98%;
     transition: filter 0.3s ease;
+    display: block;
     position: relative;
     z-index: 0;
+    align-items: center;
+    
 }
-.cover_title {
+
+.cover__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 1;
+    z-index: 1; 
 }
-.cover_title-tieuDe {
+
+.cover__title--router66 {
     width: 100%;
     font-size: 50px;
     font-weight: bold;
     color: white;
     text-decoration: none;
 }
-.cover_title-subtitle {
+
+.cover__title--subtitle {
     color: white;
     margin-top: 10px;
-}
-.cover_img-image:hover {
-    filter: brightness(70%); 
-}
-.footer{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin-top: 10px;
-}
-.footer_link{
-    float: left;
-}
-.footer_copylink{
-    float: right;
-}
-.footer_link-a{
-    color: white;
-}
-.footer_link-a:hover{
-    color: orange;
 }
 
+.cover__img--image:hover {
+    filter: brightness(30%);
+}
+
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr auto; 
+    margin-top: 10px;
+    align-items: center; 
+}
+
+.footer__link {
+    float: left;
+    margin: 10px 0px 20px 20px ;
+}
+
+.footer__copyright {
+    justify-self: end; 
+    margin: 10px 20px 20px 0px ;
+}
+
+.footer__link--path {
+    color: white;
+    
+}
+
+.footer__link--path:hover {
+    color: orange;
+}
